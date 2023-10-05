@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+
+define('APPLICATION_ROOT_DIR', realpath(dirname(__DIR__) . '/..'));
+define('APPLICATION_STORE', 'DE');
+
+require_once __DIR__ . '/../../../../vendor/autoload.php';
+
+use Spryker\Zed\Console\Communication\Bootstrap\ConsoleBootstrap;
+
+
+echo  realpath(dirname(__DIR__) . '/..');
+
+$bootstrap = new ConsoleBootstrap();
+
+$bootstrap->run();

@@ -1,0 +1,27 @@
+{
+    "name": "turbine-kreuzberg/spryker-sitemap",
+    "description": "Sitemap module for Spryker shop",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "TurbineKreuzberg\\": "src/TurbineKreuzberg"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pyz\\": "tests/App/src/Pyz/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Damijan Cavar",
+            "email": "damijan.cavar@turbinekreuzberg.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require-dev": {
+        "spryker/application": "^3.33",
+        "spryker/console": "^4.12"
+    }
+}
