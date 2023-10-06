@@ -42,10 +42,12 @@ class SitemapDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @return array<\Spryker\Shared\ApplicationExtension\Dependency\Plugin\ApplicationPluginInterface>
+     * @return \TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface[]
      */
     protected function getSitemapPlugins(): array
     {
-        return [new DummyProductsAbstractSitemapPlugin()];
+        return [
+            new DummyProductsAbstractSitemapPlugin()
+        ];
     }
 }

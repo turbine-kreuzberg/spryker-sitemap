@@ -68,7 +68,7 @@ class SitemapBusinessFactory extends AbstractBusinessFactory
     }
 
     /**
-     * @return array
+     * @return \TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface[]
      */
     private function getSitemapPlugins(): array
     {

@@ -23,7 +23,8 @@
     "require-dev": {
         "spryker/application": "^3.33",
         "spryker/console": "^4.12",
-        "spryker/code-sniffer": "dev-master"
+        "spryker/code-sniffer": "dev-master",
+        "spryker-sdk/phpstan-spryker": "^1.0@dev"
     },
     "config": {
         "allow-plugins": {

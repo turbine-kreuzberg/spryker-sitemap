@@ -66,3 +66,11 @@ In order for console commands to do anything you will need to register at least 
 ```
 
 ## Testing
+
+### Checking for code style violations
+
+#### Sniffing
+`vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src`
+
+#### Fixing of automatically fixable errors
+`vendor/bin/phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src`
