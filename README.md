@@ -74,3 +74,6 @@ In order for console commands to do anything you will need to register at least 
 
 #### Fixing of automatically fixable errors
 `vendor/bin/phpcbf --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src`
+
+### PHPStan
+`vendor/bin/phpstan`
