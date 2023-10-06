@@ -19,6 +19,11 @@ class UrlBuilder implements UrlBuilderInterface
         $this->configuration = $configuration;
     }
 
+    /**
+     * @param string $url
+     *
+     * @return string
+     */
     public function buildUrl(string $url): string
     {
         $protocol = 'http';

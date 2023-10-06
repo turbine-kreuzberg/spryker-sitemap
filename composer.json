@@ -22,6 +22,12 @@
     "minimum-stability": "dev",
     "require-dev": {
         "spryker/application": "^3.33",
-        "spryker/console": "^4.12"
+        "spryker/console": "^4.12",
+        "spryker/code-sniffer": "dev-master"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
     }
 }

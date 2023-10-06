@@ -8,5 +8,4 @@ interface IndexWriterInterface
      * @return void
      */
     public function writeIndex(): void;
-
 }

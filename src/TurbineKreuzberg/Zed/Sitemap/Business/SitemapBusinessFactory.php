@@ -18,22 +18,31 @@ use TurbineKreuzberg\Zed\Sitemap\SitemapDependencyProvider;
  */
 class SitemapBusinessFactory extends AbstractBusinessFactory
 {
+    /**
+     * @return \TurbineKreuzberg\Zed\Sitemap\Business\Writer\SitemapWriterInterface
+     */
     public function createSitemapWriter(): SitemapWriterInterface
     {
         return new SitemapWriter(
             $this->getConfig(),
             $this->createSitemapBuilder(),
-            $this->getSitemapPlugins()
+            $this->getSitemapPlugins(),
         );
     }
 
+    /**
+     * @return \TurbineKreuzberg\Zed\Sitemap\Business\Builder\SitemapBuilder
+     */
     public function createSitemapBuilder(): SitemapBuilder
     {
         return new SitemapBuilder(
-            $this->createUrlBuilder()
+            $this->createUrlBuilder(),
         );
     }
 
+    /**
+     * @return \TurbineKreuzberg\Zed\Sitemap\Business\Writer\IndexWriterInterface
+     */
     public function createIndexWriter(): IndexWriterInterface
     {
         return new IndexWriter(
@@ -50,6 +59,9 @@ class SitemapBusinessFactory extends AbstractBusinessFactory
         return new IndexBuilder($this->getConfig(), $this->getSitemapPlugins());
     }
 
+    /**
+     * @return \TurbineKreuzberg\Zed\Sitemap\Business\Builder\UrlBuilder
+     */
     public function createUrlBuilder(): UrlBuilder
     {
         return new UrlBuilder($this->getConfig());

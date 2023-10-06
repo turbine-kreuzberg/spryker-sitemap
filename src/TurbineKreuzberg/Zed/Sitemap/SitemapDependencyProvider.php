@@ -13,6 +13,11 @@ class SitemapDependencyProvider extends AbstractBundleDependencyProvider
      */
     public const PLUGINS_SITEMAP = 'PLUGINS_SITEMAP';
 
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = parent::provideBusinessLayerDependencies($container);

@@ -41,14 +41,15 @@ class IndexBuilder implements IndexBuilderInterface
      * @param \TurbineKreuzberg\Zed\Sitemap\SitemapConfig $configuration
      * @param \TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface[] $plugins
      */
-    public function __construct(
-        SitemapConfig $configuration,
-        array $plugins,
-    ) {
+    public function __construct(SitemapConfig $configuration, array $plugins)
+    {
         $this->configuration = $configuration;
         $this->plugins = $plugins;
     }
 
+    /**
+     * @return string|bool
+     */
     public function buildIndex(): string|bool
     {
         $xmlUrlSetObject = new SimpleXMLElement(static::XML_TAG_WITH_ENCODING . static::XML_URL_SET_TAG_WITH_NAMESPACE);

@@ -8,7 +8,7 @@ use TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface;
 class DummyProductsAbstractSitemapPlugin implements SitemapPluginInterface
 {
  /**
-  * @return void
+  * @return \Generator
   */
     public function readValue(): Generator
     {
@@ -32,6 +32,9 @@ class DummyProductsAbstractSitemapPlugin implements SitemapPluginInterface
         }
     }
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return 'dummy-abstract-sitemap';

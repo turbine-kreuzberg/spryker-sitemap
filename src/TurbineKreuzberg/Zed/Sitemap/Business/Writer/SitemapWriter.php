@@ -3,12 +3,10 @@
 namespace TurbineKreuzberg\Zed\Sitemap\Business\Writer;
 
 use TurbineKreuzberg\Zed\Sitemap\Business\Builder\SitemapBuilderInterface;
-use TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface;
 use TurbineKreuzberg\Zed\Sitemap\SitemapConfig;
 
 class SitemapWriter implements SitemapWriterInterface
 {
-
     protected SitemapBuilderInterface $builder;
 
     /**
@@ -22,14 +20,14 @@ class SitemapWriter implements SitemapWriterInterface
     private array $plugins;
 
     /**
-     * @param SitemapConfig $configuration
-     * @param SitemapBuilderInterface $builder
-     * @param SitemapPluginInterface[] $plugins
+     * @param \TurbineKreuzberg\Zed\Sitemap\SitemapConfig $configuration
+     * @param \TurbineKreuzberg\Zed\Sitemap\Business\Builder\SitemapBuilderInterface $builder
+     * @param \TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface[] $plugins
      */
     public function __construct(
         SitemapConfig $configuration,
         SitemapBuilderInterface $builder,
-        array $plugins,
+        array $plugins
     ) {
         $this->configuration = $configuration;
         $this->plugins = $plugins;
@@ -37,8 +35,6 @@ class SitemapWriter implements SitemapWriterInterface
     }
 
     /**
-     * @throws \RuntimeException
-     *
      * @return void
      */
     public function writeSitemap(): void
@@ -50,6 +46,8 @@ class SitemapWriter implements SitemapWriterInterface
     }
 
     /**
+     * @param string $fileName
+     *
      * @return string
      */
     protected function getFullPath(string $fileName): string
