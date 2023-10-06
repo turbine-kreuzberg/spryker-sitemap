@@ -1,19 +1,10 @@
 # spryker-sitemap
 
-Sitemap index
+Module generates sitemap according to the [sitemap protocol](https://www.sitemaps.org/protocol.html).
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <sitemap>
-    <loc>https://www.example.com/sitemap1.xml.gz</loc>
-  </sitemap>
-  <sitemap>
-    <loc>https://www.example.com/sitemap2.xml.gz</loc>
-  </sitemap>
-</sitemapindex>
-```
+## Usage
 
+To use the provided console commands you will need to register TurbineKreuzberg namespace in your `config_default.php`.
 
 ```php
 
@@ -23,7 +14,7 @@ $config[KernelConstants::CORE_NAMESPACES] = [
 ];
 ```
 
-In `ConsoleDependencyProvider` add
+In `ConsoleDependencyProvider` you need to add Sitemap consoles that you want to use.
 
 ```php
 use Shared\Zed\Sitemap\Communication\Console\SitemapConsole;use Shared\Zed\Sitemap\Communication\Console\SitemapIndexConsole;
@@ -37,3 +28,41 @@ use Shared\Zed\Sitemap\Communication\Console\SitemapConsole;use Shared\Zed\Sitem
             new SitemapConsole(),
         ];
 ```
+
+If everything is working properly you should see sitemap section in your
+```text
+ sitemap
+  sitemap:generate        Generate sitemap for all active products.
+  sitemap:index:generate  Generate sitemap index (do not forget to generate sitemaps first).
+```
+
+## Sitemap plugins
+
+In order for console commands to do anything you will need to register at least one sitempap plugin in SitemapDependencyProvider. Plugins need to implement
+`\TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface`
+
+### Example plugins
+
+## Technical considerations
+
+
+
+## Extending the module functionality
+
+## A word about sitemaps
+
+### Sitemap index example
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.example.com/sitemap1.xml.gz</loc>
+  </sitemap>
+  <sitemap>
+    <loc>https://www.example.com/sitemap2.xml.gz</loc>
+  </sitemap>
+</sitemapindex>
+```
+
+## Testing
