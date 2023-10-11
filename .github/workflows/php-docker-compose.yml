@@ -1,0 +1,50 @@
+name: PHP 8.2 with Docker Compose
+
+on:
+    push:
+        branches:
+            - main  # Change this to your main branch name
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Docker Compose
+              run: |
+                  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                  sudo chmod +x /usr/local/bin/docker-compose
+              if: runner.os == 'Linux'
+
+            - name: Log in to Docker Hub (if needed)
+              run: |
+                  echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+              if: secrets.DOCKERHUB_USERNAME && secrets.DOCKERHUB_PASSWORD
+
+            - name: Build and run containers
+              run: |
+                  docker-compose -f docker-compose.yml up -d
+              working-directory: ./path/to/your/application  # Change this to your project's directory
+
+            - name: Wait for containers to start (adjust as needed)
+              run: |
+                  sleep 10
+              if: false  # You might need to adjust the timing
+
+            - name: Execute code sniffer
+              run: |
+                  docker-compose exec -i php  vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src -v
+              working-directory: ./  # Change this to your project's directory
+
+            -  name: Execute code sniffer
+               run: |
+                    docker-compose exec -i php  vendor/bin/phpstan analyse ./src -v
+               working-directory: ./  # Change this to your project's directory
+
+            - name: Stop and remove containers
+              run: |
+                  docker-compose -f docker-compose.yml down
+              working-directory: ./  # Change this to your project's directory
