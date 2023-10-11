@@ -8,9 +8,6 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
-        env:
-            DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-            DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
 
         steps:
             - name: Checkout code
@@ -23,6 +20,9 @@ jobs:
               if: runner.os == 'Linux'
 
             - name: Log in to Docker Hub (if needed)
+              env:
+                  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+                  DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
               if: ${{ env.DOCKERHUB_USERNAME != '' }} && {{env.DOCKERHUB_PASSWORD != ''}}
               run: |
                   echo ${{ env.DOCKERHUB_PASSWORD }} is the password
