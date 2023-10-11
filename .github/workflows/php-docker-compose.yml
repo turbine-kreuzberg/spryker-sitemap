@@ -25,7 +25,7 @@ jobs:
             - name: Log in to Docker Hub (if needed)
               if: ${{ env.DOCKERHUB_USERNAME != '' }} && {{env.DOCKERHUB_PASSWORD != ''}}
               run: |
-                  echo env.DOCKERHUB_USERNAME is the value
+                  echo ${{ env.DOCKERHUB_PASSWORD }} is the password
 
 
             - name: Build and run containers
