@@ -23,9 +23,10 @@ jobs:
               if: runner.os == 'Linux'
 
             - name: Log in to Docker Hub (if needed)
+              if: ${{ env.DOCKERHUB_USERNAME != '' }} && {{env.DOCKERHUB_PASSWORD != ''}}
               run: |
                   echo ${{ env.DOCKERHUB_PASSWORD }} | docker login -u ${{ env.DOCKERHUB_USERNAME }} --password-stdin
-              if: ${{ env.DOCKERHUB_USERNAME != '' }} && {{env.DOCKERHUB_PASSWORD != ''}}
+
 
             - name: Build and run containers
               run: |
