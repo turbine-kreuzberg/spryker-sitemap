@@ -27,7 +27,7 @@ jobs:
             - name: Build and run containers
               run: |
                   docker-compose -f docker-compose.yml up -d
-              working-directory: ./path/to/your/application  # Change this to your project's directory
+              working-directory: ./  # Change this to your project's directory
 
             - name: Wait for containers to start (adjust as needed)
               run: |
