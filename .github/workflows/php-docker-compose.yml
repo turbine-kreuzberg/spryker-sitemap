@@ -23,7 +23,7 @@ jobs:
               env:
                   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
                   DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-              if: 1 == ''
+              if: env.DOCKERHUB_USERNAME != '' &&  env.DOCKERHUB_PASSWORD != ''
               run: |
                   echo ${{ env.DOCKERHUB_PASSWORD }} is the password
 
