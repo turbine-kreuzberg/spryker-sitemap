@@ -22,7 +22,7 @@ jobs:
             - name: Log in to Docker Hub (if needed)
               run: |
                   echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-              if: secrets.DOCKERHUB_USERNAME && secrets.DOCKERHUB_PASSWORD
+              if: secrets && secrets.DOCKERHUB_USERNAME && secrets.DOCKERHUB_PASSWORD
 
             - name: Build and run containers
               run: |
