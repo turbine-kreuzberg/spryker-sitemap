@@ -25,7 +25,7 @@ jobs:
             - name: Log in to Docker Hub (if needed)
               if: ${{ env.DOCKERHUB_USERNAME != '' }} && {{env.DOCKERHUB_PASSWORD != ''}}
               run: |
-                  echo 'This step will only run if the secret has a value set.'
+                  echo env.DOCKERHUB_USERNAME is the value
 
 
             - name: Build and run containers
