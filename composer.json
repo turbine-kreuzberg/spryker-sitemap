@@ -30,5 +30,9 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
-    }
+    },
+  "require": {
+    "ext-zlib": "*",
+    "ext-simplexml": "*"
+  }
 }

@@ -32,6 +32,6 @@ class UrlBuilder implements UrlBuilderInterface
             $protocol = 'https';
         }
 
-        return sprintf('%s//%s%s', $protocol, $this->configuration->getHostname(), $url);
+        return sprintf('%s//%s%s', $protocol, $this->configuration->getHostname(), htmlspecialchars($url));
     }
 }

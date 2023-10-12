@@ -47,9 +47,14 @@ In order for console commands to do anything you will need to register at least 
 
 
 
+
+
 ## Extending the module functionality
 
 ## A word about sitemaps
+
+Sitemap standard comes with some [limitations](https://www.sitemaps.org/faq.html#faq_sitemap_size) that we need to consider.
+Probably most crucial is that you can have 50k links in one sitemap. If you have more than that you need to create sitemap index and multiple sitemaps. When you create your plugins you need to take that into account.
 
 ### Sitemap index example
 
