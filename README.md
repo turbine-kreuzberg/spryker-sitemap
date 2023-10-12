@@ -38,15 +38,20 @@ If everything is working properly you should see sitemap section in your
 
 ## Sitemap plugins
 
-In order for console commands to do anything you will need to register at least one sitempap plugin in SitemapDependencyProvider. Plugins need to implement
+In order for console commands to do anything you will need to register at least one sitemap plugin in `SitemapDependencyProvider`. Plugins need to implement
 `\TurbineKreuzberg\Zed\Sitemap\Dependency\Plugin\SitemapPluginInterface`
 
-### Example plugins
 
-## Technical considerations
+### Technical considerations
+Sitemap generation can be resource intensive and that is why we can use [generators](https://www.php.net/manual/en/language.generators.php) to reduce the memory usage.
+ORMs should be avoided for bulk operations and Propel provides access to underline [PDO](https://www.php.net/manual/en/book.pdo.php) and
+we can utilize [PDOStatement::fetch](https://www.php.net/manual/en/pdostatement.fetch.php) to iterate through database records to save the memory.
 
 
+### Example plugin
 
+In the [documentation folder](./documentation) you can find a fully implemented [CategorySitemapPlugin](./documentation/src/Pyz/Zed/Url/Communication/Plugin/Sitemap/CategorySitemapPlugin.php)
+that will call url module to retrieve all the URLs for categories. You can find all the necessary changed in the project corresponding folders.
 
 
 ## Extending the module functionality
