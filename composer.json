@@ -11,8 +11,7 @@
     "autoload-dev": {
         "psr-4": {
             "Pyz\\": "tests/App/src/Pyz/",
-            "TurbineKreuzbergTest\\": "tests/tests/PyzTest/",
-            "TurbineKreuzbergTest\\Support\\": "tests/tests/Support/"
+            "TurbineKreuzbergTest\\": "tests/tests/TurbineKreuzbergTest/"
         }
     },
     "authors": [

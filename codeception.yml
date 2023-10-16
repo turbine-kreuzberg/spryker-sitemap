@@ -1,7 +1,7 @@
 namespace: Tests
 
 include:
-    - tests/tests/PyzTest/*/*
+    - tests/tests/TurbineKreuzbergTest/*/*
 
 support_namespace: Support
 

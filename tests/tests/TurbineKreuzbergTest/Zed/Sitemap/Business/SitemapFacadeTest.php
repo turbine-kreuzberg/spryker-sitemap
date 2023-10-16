@@ -1,7 +1,7 @@
 <?php
 
 
-namespace PyzTest\Zed\Sitemap\Business;
+namespace TurbineKreuzbergTest\Zed\Sitemap\Business;
 
 class SitemapFacadeTest extends \Codeception\Test\Unit
 {

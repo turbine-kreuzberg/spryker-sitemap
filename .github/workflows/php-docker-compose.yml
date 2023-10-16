@@ -47,6 +47,12 @@ jobs:
                     docker-compose exec -i php  vendor/bin/phpstan analyse ./src -v
                working-directory: ./  # Change this to your project's directory
 
+            -   name: Run tests
+                run: |
+                    docker-compose exec -i php  vendor/bin/codecept build
+                    docker-compose exec -i php  vendor/bin/codecept run
+                working-directory: ./  # Change this to your project's directory
+
             - name: Stop and remove containers
               run: |
                   docker-compose -f docker-compose.yml down
