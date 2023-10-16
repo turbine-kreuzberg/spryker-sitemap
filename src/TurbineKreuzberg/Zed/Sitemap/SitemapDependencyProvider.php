@@ -47,7 +47,7 @@ class SitemapDependencyProvider extends AbstractBundleDependencyProvider
     protected function getSitemapPlugins(): array
     {
         return [
-            new DummyProductsAbstractSitemapPlugin()
+            new DummyProductsAbstractSitemapPlugin(),
         ];
     }
 }
