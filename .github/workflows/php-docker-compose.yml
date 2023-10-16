@@ -28,29 +28,29 @@ jobs:
 
             - name: Build and run containers
               run: |
-                  docker-compose -f docker-compose.yml up -d
+                  docker-compose -f docker-compose.yml up
               working-directory: ./  # Change this to your project's directory
 
-            - name: Wait for containers to start (adjust as needed)
-              run: |
-                  sleep 10
-              if: false  # You might need to adjust the timing
+#            - name: Wait for containers to start (adjust as needed)
+#              run: |
+#                  sleep 10
+#              if: false  # You might need to adjust the timing
 
 
             -   name: Execute code sniffer
                 run: |
-                    docker-compose exec php vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src -v
+                    docker-compose run php vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Execute phpstan
                 run: |
-                    docker-compose exec php  vendor/bin/phpstan analyse ./src -v
+                    docker-compose run php  vendor/bin/phpstan analyse ./src -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Run tests
                 run: |
-                    docker-compose exec php  vendor/bin/codecept build -v
-                    docker-compose exec php  vendor/bin/codecept run -v
+                    docker-compose run php  vendor/bin/codecept build -v
+                    docker-compose run php  vendor/bin/codecept run -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Stop and remove containers
