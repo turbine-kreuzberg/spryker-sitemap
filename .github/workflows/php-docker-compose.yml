@@ -10,31 +10,27 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Checkout code
-              uses: actions/checkout@v4
+            -   name: Checkout code
+                uses: actions/checkout@v4
 
-            - name: Set up Docker Compose
-              run: |
-                  sudo curl -L "https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-                  sudo chmod +x /usr/local/bin/docker-compose
-              if: runner.os == 'Linux'
+            -   name: Set up Docker Compose
+                run: |
+                    sudo curl -L "https://github.com/docker/compose/releases/download/v2.22.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+                    sudo chmod +x /usr/local/bin/docker-compose
+                if: runner.os == 'Linux'
 
-            - name: Log in to Docker Hub (if needed)
-              uses: docker/login-action@v3
-              with:
-                username: ${{ secrets.DOCKERHUB_USERNAME }}
-                password: ${{ secrets.DOCKERHUB_TOKEN }}
-              if: env.username != '' &&  env.password != ''
+            -   name: Log in to Docker Hub (if needed)
+                uses: docker/login-action@v3
+                with:
+                    username: ${{ secrets.DOCKERHUB_USERNAME }}
+                    password: ${{ secrets.DOCKERHUB_TOKEN }}
+                if: env.username != '' &&  env.password != ''
 
-            - name: Build and run containers
-              run: |
-                  docker-compose -f docker-compose.yml up php --detach --wait --wait-timeout 30
-              working-directory: ./  # Change this to your project's directory
+            -   name: Build and run containers
+                run: |
+                    docker-compose -f docker-compose.yml up php --detach --wait --wait-timeout 30
+                working-directory: ./  # Change this to your project's directory
 
-#            - name: Wait for containers to start (adjust as needed)
-#              run: |
-#                  sleep 10
-#              if: false  # You might need to adjust the timing
             -   name: Execute code sniffer
                 run: |
                     docker-compose exec php composer install
