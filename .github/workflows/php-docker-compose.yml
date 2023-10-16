@@ -39,18 +39,18 @@ jobs:
 
             -   name: Execute code sniffer
                 run: |
-                    docker-compose exec -T php  vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src -v
+                    docker-compose exec -it php vendor/bin/phpcs --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml ./src -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Execute phpstan
                 run: |
-                    docker-compose exec -T php  vendor/bin/phpstan analyse ./src -v
+                    docker-compose exec -it php  vendor/bin/phpstan analyse ./src -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Run tests
                 run: |
-                    docker-compose exec -T php  vendor/bin/codecept build -v
-                    docker-compose exec -T php  vendor/bin/codecept run -v
+                    docker-compose exec -it php  vendor/bin/codecept build -v
+                    docker-compose exec -it php  vendor/bin/codecept run -v
                 working-directory: ./  # Change this to your project's directory
 
             -   name: Stop and remove containers
