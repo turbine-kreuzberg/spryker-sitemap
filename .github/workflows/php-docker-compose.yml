@@ -28,7 +28,7 @@ jobs:
 
             - name: Build and run containers
               run: |
-                  docker-compose -f docker-compose.yml up
+                  docker-compose -f docker-compose.yml up --detach --wait --wait-timeout 30
               working-directory: ./  # Change this to your project's directory
 
 #            - name: Wait for containers to start (adjust as needed)
