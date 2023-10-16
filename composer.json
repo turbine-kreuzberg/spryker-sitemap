@@ -10,7 +10,9 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Pyz\\": "tests/App/src/Pyz/"
+            "Pyz\\": "tests/App/src/Pyz/",
+            "TurbineKreuzbergTest\\": "tests/tests/PyzTest/",
+            "TurbineKreuzbergTest\\Support\\": "tests/tests/Support/"
         }
     },
     "authors": [
@@ -24,15 +26,18 @@
         "spryker/application": "^3.33",
         "spryker/console": "^4.12",
         "spryker/code-sniffer": "dev-master",
-        "spryker-sdk/phpstan-spryker": "^1.0@dev"
+        "spryker-sdk/phpstan-spryker": "^1.0@dev",
+        "codeception/codeception": "5.0.x-dev",
+        "codeception/module-phpbrowser": "*",
+        "codeception/module-asserts": "*"
     },
     "config": {
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
-  "require": {
-    "ext-zlib": "*",
-    "ext-simplexml": "*"
-  }
+    "require": {
+        "ext-zlib": "*",
+        "ext-simplexml": "*"
+    }
 }
