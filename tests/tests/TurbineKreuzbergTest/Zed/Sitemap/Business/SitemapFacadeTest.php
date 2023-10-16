@@ -18,6 +18,6 @@ class SitemapFacadeTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-
+        $this->tester->assertTrue(false);
     }
 }
