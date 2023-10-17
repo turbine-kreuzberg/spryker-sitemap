@@ -29,7 +29,8 @@
         "codeception/codeception": "5.0.x-dev",
         "codeception/module-phpbrowser": "*",
         "codeception/module-asserts": "*",
-        "spryker/testify": "^3.50"
+        "spryker/testify": "^3.50",
+        "ext-dom": "*"
     },
     "config": {
         "allow-plugins": {

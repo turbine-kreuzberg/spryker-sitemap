@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace TurbineKreuzbergTest\Zed\Sitemap;
 
+use Codeception\Actor;
+
 /**
  * Inherited Methods
+ *
  * @method void wantTo($text)
  * @method void wantToTest($text)
  * @method void execute($callable)
@@ -17,9 +20,9 @@ namespace TurbineKreuzbergTest\Zed\Sitemap;
  * @method void comment($description)
  * @method void pause($vars = [])
  *
- * @SuppressWarnings(PHPMD)
-*/
-class SitemapBusinessTester extends \Codeception\Actor
+ * @SuppressWarnings(\TurbineKreuzbergTest\Zed\Sitemap\PHPMD)
+ */
+class SitemapBusinessTester extends Actor
 {
     use _generated\SitemapBusinessTesterActions;
 
