@@ -28,7 +28,8 @@
         "spryker-sdk/phpstan-spryker": "^1.0@dev",
         "codeception/codeception": "5.0.x-dev",
         "codeception/module-phpbrowser": "*",
-        "codeception/module-asserts": "*"
+        "codeception/module-asserts": "*",
+        "spryker/testify": "^3.50"
     },
     "config": {
         "allow-plugins": {
