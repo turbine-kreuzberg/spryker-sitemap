@@ -54,7 +54,17 @@ In the [documentation folder](./documentation) you can find a fully implemented 
 that will call url module to retrieve all the URLs for categories. You can find all the necessary changed in the project corresponding folders.
 
 
-## Extending the module functionality
+## Configuration
+
+Sitemap module comes with some configuration that you need to be aware of.
+
+| Configuration       | Description                                                     |
+|---------------------|-----------------------------------------------------------------|
+| PUBLIC_HOSTNAME     | Hostname of your site (i.e. www.example.com)                    |
+| INDEX_FILENAME      | defaults to sitemap_index.xml                                   |
+| IS_SSL_ENABLED      | to put https or http in urls (defaults to true)                 |
+| SITEMAP_FOLDER_PATH | folder in which sitemaps are to be generated (defaults to /tmp) |
+
 
 ## A word about sitemaps
 
@@ -87,3 +97,8 @@ Probably most crucial is that you can have 50k links in one sitemap. If you have
 
 ### PHPStan
 `vendor/bin/phpstan`
+
+### Running tests
+
+`vendor/bin/codecept build`
+`vendor/bin/codecept run`
