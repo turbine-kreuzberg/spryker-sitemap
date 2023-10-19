@@ -2,6 +2,10 @@
 
 Module generates sitemap according to the [sitemap protocol](https://www.sitemaps.org/protocol.html).
 
+## Installation
+
+`composer require turbine-kreuzberg/spryker-sitemap`
+
 ## Usage
 
 To use the provided console commands you will need to register TurbineKreuzberg namespace in your `config_default.php`.
