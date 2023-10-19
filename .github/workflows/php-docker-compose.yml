@@ -31,7 +31,7 @@ jobs:
                     docker-compose -f docker-compose.yml up php --detach --wait --wait-timeout 30
                 working-directory: ./  # Change this to your project's directory
 
-            -   name: Execute code sniffer
+            -   name: Installing composer dependencies
                 run: |
                     docker-compose exec php composer install
                 working-directory: ./  # Change this to your project's directory
