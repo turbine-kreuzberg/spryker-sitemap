@@ -4,6 +4,7 @@ namespace TurbineKreuzberg\Zed\Sitemap\Communication\Console;
 
 use Exception;
 use Spryker\Zed\Kernel\Communication\Console\Console;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -20,7 +21,7 @@ class SitemapConsole extends Console
     /**
      * @var string
      */
-    public const DESCRIPTION = 'Generate sitemap for all active products.';
+    public const DESCRIPTION = 'Generate sitemap(s).';
 
     /**
      * @return void
@@ -28,7 +29,8 @@ class SitemapConsole extends Console
     protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME)
-            ->setDescription(static::DESCRIPTION);
+            ->setDescription(static::DESCRIPTION)
+            ->addArgument('name', InputArgument::OPTIONAL, 'Name of the sitemap you want to generate');
     }
 
     /**
@@ -40,7 +42,9 @@ class SitemapConsole extends Console
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
-            $this->getFacade()->generateSitemap();
+            $name = $input->getArgument('name');
+
+            $this->getFacade()->generateSitemap($name);
 
             $output->writeln('Sitemap was successfully generated.');
 

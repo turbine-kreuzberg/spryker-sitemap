@@ -10,11 +10,13 @@ use Spryker\Zed\Kernel\Business\AbstractFacade;
 class SitemapFacade extends AbstractFacade implements SitemapFacadeInterface
 {
     /**
+     * @param string|null $name
+     *
      * @return void
      */
-    public function generateSitemap(): void
+    public function generateSitemap(?string $name): void
     {
-        $this->getFactory()->createSitemapWriter()->writeSitemap();
+        $this->getFactory()->createSitemapWriter()->writeSitemap($name);
     }
 
     /**

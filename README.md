@@ -6,7 +6,7 @@ Module generates sitemap according to the [sitemap protocol](https://www.sitemap
 
 `composer require turbine-kreuzberg/spryker-sitemap`
 
-## Usage
+## Setup
 
 To use the provided console commands you will need to register TurbineKreuzberg namespace in your `config_default.php`.
 
@@ -36,9 +36,33 @@ use Shared\Zed\Sitemap\Communication\Console\SitemapConsole;use Shared\Zed\Sitem
 If everything is working properly you should see sitemap section in your
 ```text
  sitemap
-  sitemap:generate        Generate sitemap for all active products.
+  sitemap:generate        Generate sitemap(s).
   sitemap:index:generate  Generate sitemap index (do not forget to generate sitemaps first).
 ```
+
+You do not need to register index console if you have only one plugin and you are generating a single sitemap.
+
+## Usage
+
+To generate sitemaps for all of your registered plugins you need to run:
+
+```bash
+vendor/bin/console sitemap:generate
+```
+
+if you want to generate sitemap for a single sitemap plugin instead of all of them you can use `sitemap:generate` with a plugin name. Typical use case is when you have different update frequencies for different sitemaps.
+
+```bash
+vendor/bin/console sitemap:generate name-of-your-plugin
+```
+
+To generate sitemap index you need to run:
+
+```bash
+vendor/bin/console  sitemap:index:generate
+```
+
+Generation of index will assume that all the sitemaps for registered plugins are generated. For now there is no validation.
 
 ## Sitemap plugins
 

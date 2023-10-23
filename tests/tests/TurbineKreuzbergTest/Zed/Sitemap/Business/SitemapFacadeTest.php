@@ -5,6 +5,7 @@ namespace TurbineKreuzbergTest\Zed\Sitemap\Business;
 use Codeception\Test\Unit;
 use DOMDocument;
 use TurbineKreuzberg\Zed\Sitemap\Business\SitemapFacade;
+use TurbineKreuzberg\Zed\Sitemap\Exception\InvalidArgumentException;
 
 class SitemapFacadeTest extends Unit
 {
@@ -16,8 +17,11 @@ class SitemapFacadeTest extends Unit
     /**
      * @return void
      */
-    protected function _before()
+    protected function _after()
     {
+        if (file_exists('/tmp/dummy-abstract-sitemap.xml.gz')) {
+            unlink('/tmp/dummy-abstract-sitemap.xml.gz');
+        }
     }
 
     /**
@@ -49,9 +53,41 @@ class SitemapFacadeTest extends Unit
 
         codecept_debug(print_r($facade, true));
 
-        $facade->generateSitemap();
+        $facade->generateSitemap(null);
 
         $this->validateSitemapAgainstXsdSchema('/tmp/dummy-abstract-sitemap.xml.gz');
+    }
+
+    /**
+     * @return void
+     */
+    public function testSingleSitemapCreation()
+    {
+        /** @var \TurbineKreuzberg\Zed\Sitemap\Business\SitemapFacadeInterface $facade */
+        $facade = $this->tester->getLocator()->sitemap()->facade();
+
+        $this->assertInstanceOf(SitemapFacade::class, $facade);
+
+        $facade->generateSitemap('dummy-abstract-sitemap');
+
+        $this->validateSitemapAgainstXsdSchema('/tmp/dummy-abstract-sitemap.xml.gz');
+    }
+
+    /**
+     * @return void
+     */
+    public function testSingleSitemapCreationFailsDueToInvalidName()
+    {
+        /** @var \TurbineKreuzberg\Zed\Sitemap\Business\SitemapFacadeInterface $facade */
+        $facade = $this->tester->getLocator()->sitemap()->facade();
+
+        $this->assertInstanceOf(SitemapFacade::class, $facade);
+
+        $this->expectException(InvalidArgumentException::class);
+
+        $facade->generateSitemap('invalid-name');
+
+
     }
 
     /**
